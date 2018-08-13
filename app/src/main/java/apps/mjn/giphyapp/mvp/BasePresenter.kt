@@ -6,7 +6,7 @@ import java.lang.ref.WeakReference
 /**
  * Created by mJafarinejad on 8/11/2018.
  */
-open class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
+abstract class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
 
     lateinit var view: WeakReference<V?>
     private val compositeDisposable = CompositeDisposable()
