@@ -1,5 +1,6 @@
 package apps.mjn.giphyapp.screens.giflist
 
+import android.util.Log
 import apps.mjn.giphyapp.mvp.BasePresenter
 import apps.mjn.giphyapp.Constants
 import apps.mjn.giphyapp.kx.hasMore
@@ -28,7 +29,7 @@ class GifListPresenter @Inject constructor(val api:ApiInterface) : BasePresenter
         if (hasMore) {
             showLoadingItems()
             addDisposable(
-                    api.getTrending(Constants.API_KEY, limit, page * limit)
+                    api.getTrending(Constants.API_KEY, limit, getOffset())
                             .setSchedulers()
                             .subscribe(
                                     {
@@ -46,6 +47,12 @@ class GifListPresenter @Inject constructor(val api:ApiInterface) : BasePresenter
             )
         }
     }
+
+    /**
+     * Gets correct offset for current page
+     */
+    private fun getOffset() =
+            page * limit
 
     /**
      * Decides the loading behavior and shows it on view
