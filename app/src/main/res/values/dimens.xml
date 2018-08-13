@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="transition_duration">300</integer>
+    <dimen name="space_0.25x">2dp</dimen>
+    <dimen name="space_0.5x">4dp</dimen>
+    <dimen name="space_1x">8dp</dimen>
+    <dimen name="space_2x">16dp</dimen>
+    <dimen name="progress_small">32dp</dimen>
+    <dimen name="progress">48dp</dimen>
+</resources>

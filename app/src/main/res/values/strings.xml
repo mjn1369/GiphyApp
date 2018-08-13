@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GiphyApp</string>
+    <string name="retry">Retry</string>
+    <string name="error_nonet">No Internet Connection</string>
+</resources>

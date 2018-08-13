@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="apps.mjn.giphyapp.screens.giflist.GifListView">
+
+    <ProgressBar
+        android:id="@+id/pb_giflist_loading"
+        android:layout_width="@dimen/progress"
+        android:layout_height="@dimen/progress"
+        android:layout_centerInParent="true"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_giflist_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/retry"
+        android:visibility="gone"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_giflist_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/holder_giflist_loadmore"
+        android:clipToPadding="false"
+        android:padding="@dimen/space_1x"
+        android:paddingBottom="@dimen/progress"
+        android:scrollbars="none"></android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/holder_giflist_loadmore"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/progress"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_0.5x">
+
+            <ProgressBar
+                android:id="@+id/pb_giflist_loadmore"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="999dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:theme="@style/ProgressBarTheme"/>
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_giflist_loadmore"
+            android:layout_width="@dimen/progress_small"
+            android:layout_height="@dimen/progress_small"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_loadmore"
+            android:tint="@color/colorPrimary"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+</RelativeLayout>
