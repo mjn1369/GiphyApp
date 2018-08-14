@@ -30,14 +30,16 @@ class GifPreviewView : BaseView(), GifPreviewContract.View {
         setContentView(R.layout.activity_gifpreview)
         injectDependencies()
         presenter.attach(this)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val parcelableInput: Parcelable = intent.getParcelableExtra(Constants.TAG_GIFVIEW)
+
+        val parcelableInput: Parcelable? = intent.getParcelableExtra(Constants.TAG_GIFVIEW)
         if(parcelableInput != null)
             currentGif = parcelableInput as GifItemModel
         else {
-            showMessage("Null Input")
             finish()
+            return
         }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         initProgress()
         setOnPlayListener()
         showGif(currentGif)
@@ -104,6 +106,6 @@ class GifPreviewView : BaseView(), GifPreviewContract.View {
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter?.detach()
+        presenter.detach()
     }
 }
