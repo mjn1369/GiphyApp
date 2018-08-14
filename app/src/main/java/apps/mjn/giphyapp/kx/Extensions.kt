@@ -65,39 +65,6 @@ fun ImageView.loadUrlWithSuccessCallback(url: String?, callback: (Unit) -> Unit)
 fun ViewGroup.inflate(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, this, false)
 //endregion
 
-//region Model Extensions
-
-/**
- * Checks the API's response status from metaModel
- */
-fun BaseResponse.isSuccessful() =
-        metaModel.status < 300
-
-/**
- * Creates and returns a GifItemModel based on GifObjectModel
- */
-fun GifObjectModel.toGifItemModel() =
-        GifItemModel(getStillUrl(), getVideoUrl(), title)
-
-/**
- * Gets the still image url from GifObjectModel
- */
-fun GifObjectModel.getStillUrl() =
-        imagesListModel.fixedHeightStill.gifUrl
-
-/**
- * Gets the video url from GifObjectModel
- */
-fun GifObjectModel.getVideoUrl() =
-        imagesListModel.originalMp4.mp4Url
-
-/**
- * Checks if the PaginationModel has more items
- */
-fun PaginationModel.hasMore() =
-        currentCount + offsetIndex < totalCount
-//endregion
-
 //region Context Extensions
 
 /**
@@ -107,18 +74,21 @@ fun Context.getAnimationScaleCoefficient() =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
         {
             1 / Settings.Global.getFloat(
-                    getContentResolver(),
+                    contentResolver,
                     Settings.Global.ANIMATOR_DURATION_SCALE,
                     1.0F)
         }
         else
         {
             1 / Settings.System.getFloat(
-                    getContentResolver(),
+                    contentResolver,
                     Settings.System.ANIMATOR_DURATION_SCALE,
                     1.0F)
         }
 
+/**
+ * Returns the screen's width in pixel unit
+ */
 fun Context.getScreenWidthInPx(): Int {
     val display = (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
     val size = Point()
@@ -132,5 +102,5 @@ fun Context.getScreenWidthInPx(): Int {
 /**
  * Sets default schedulers on observable
  */
-fun <T:Any?> Observable<T>.setSchedulers() = subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+fun <T:Any?> Observable<T>.setSchedulers(): Observable<T> = subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
 //endregion

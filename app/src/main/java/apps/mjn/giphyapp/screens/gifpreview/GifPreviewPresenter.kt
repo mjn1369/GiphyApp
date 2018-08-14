@@ -1,9 +1,7 @@
 package apps.mjn.giphyapp.screens.gifpreview
 
 import apps.mjn.giphyapp.Constants
-import apps.mjn.giphyapp.kx.isSuccessful
 import apps.mjn.giphyapp.kx.setSchedulers
-import apps.mjn.giphyapp.kx.toGifItemModel
 import apps.mjn.giphyapp.mvp.BasePresenter
 import apps.mjn.giphyapp.network.ApiInterface
 import io.reactivex.Observable

@@ -12,6 +12,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(NetworkModule::class, PresenterModule::class))
 interface InjectorClass {
-    fun injectGifListPresenter(view: GifListView)
-    fun injectGifDetailsPresenter(view: GifPreviewView)
+    fun inject(view: GifListView)
+    fun inject(view: GifPreviewView)
 }

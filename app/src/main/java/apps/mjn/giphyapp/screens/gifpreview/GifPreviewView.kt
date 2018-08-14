@@ -3,6 +3,7 @@ package apps.mjn.giphyapp.screens.gifpreview
 import android.animation.ObjectAnimator
 import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.animation.LinearInterpolator
 import apps.mjn.giphyapp.mvp.BaseView
 import apps.mjn.giphyapp.Constants
@@ -21,8 +22,8 @@ class GifPreviewView : BaseView(), GifPreviewContract.View {
     @Inject
     lateinit var presenter: GifPreviewContract.Presenter
 
-    lateinit var currentGif: GifItemModel
-    lateinit var animationRefreshProgress: ObjectAnimator
+    private lateinit var currentGif: GifItemModel
+    private lateinit var animationRefreshProgress: ObjectAnimator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,14 +31,20 @@ class GifPreviewView : BaseView(), GifPreviewContract.View {
         injectDependencies()
         presenter.attach(this)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        currentGif = intent.getSerializableExtra(Constants.TAG_GIFVIEW) as GifItemModel
+        val parcelableInput: Parcelable = intent.getParcelableExtra(Constants.TAG_GIFVIEW)
+        if(parcelableInput != null)
+            currentGif = parcelableInput as GifItemModel
+        else {
+            showMessage("Null Input")
+            finish()
+        }
         initProgress()
         setOnPlayListener()
         showGif(currentGif)
     }
 
     private fun injectDependencies(){
-        GiphyApp.getInjector()?.injectGifDetailsPresenter(this)
+        GiphyApp.getInjector()?.inject(this)
     }
 
     /**
@@ -68,7 +75,6 @@ class GifPreviewView : BaseView(), GifPreviewContract.View {
         if(currentGif.title.isNullOrBlank())
             tv_gifpreview_title.gone()
         tv_gifpreview_title.text = currentGif.title
-        vv_gifpreview_gif.stopPlayback()
         vv_gifpreview_gif.setVideoURI(Uri.parse(currentGif.videoUrl))
         vv_gifpreview_gif.requestFocus()
     }

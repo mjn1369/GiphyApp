@@ -5,9 +5,9 @@ package apps.mjn.giphyapp
  */
 class Constants {
     companion object {
-        val DELAY_RANDOM = 10000L
-        val API_KEY = "dc6zaTOxFJmzC"
-        val BASE_URL = "http://api.giphy.com"
-        val TAG_GIFVIEW = "TAG_GIFVIEW"
+        const val DELAY_RANDOM = 10000L
+        const val API_KEY = "dc6zaTOxFJmzC"
+        const val BASE_URL = "http://api.giphy.com"
+        const val TAG_GIFVIEW = "TAG_GIFVIEW"
     }
 }

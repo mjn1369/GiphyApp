@@ -3,10 +3,7 @@ package apps.mjn.giphyapp.screens.giflist
 import android.util.Log
 import apps.mjn.giphyapp.mvp.BasePresenter
 import apps.mjn.giphyapp.Constants
-import apps.mjn.giphyapp.kx.hasMore
-import apps.mjn.giphyapp.kx.isSuccessful
 import apps.mjn.giphyapp.kx.setSchedulers
-import apps.mjn.giphyapp.kx.toGifItemModel
 import apps.mjn.giphyapp.models.data.PaginationModel
 import apps.mjn.giphyapp.models.response.TrendingResponse
 import apps.mjn.giphyapp.network.ApiInterface

@@ -10,4 +10,7 @@ open class BaseResponse(
 
     @SerializedName("meta")
     val metaModel: MetaModel
-)
+) {
+    fun isSuccessful() =
+            metaModel.status < 300
+}

@@ -1,5 +1,6 @@
 package apps.mjn.giphyapp.models.data
 
+import apps.mjn.giphyapp.models.view.GifItemModel
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -12,4 +13,23 @@ data class GifObjectModel(
 
         @SerializedName("images")
         val imagesListModel: ImagesListModel
-)
+) {
+
+        /**
+        * Creates and returns a GifItemModel based on GifObjectModel
+        */
+        fun toGifItemModel() =
+        GifItemModel(getStillUrl(), getVideoUrl(), title)
+
+        /**
+         * Gets the still image url from GifObjectModel
+         */
+        fun getStillUrl() =
+                imagesListModel.fixedHeightStill.gifUrl
+
+        /**
+         * Gets the video url from GifObjectModel
+         */
+        fun getVideoUrl() =
+                imagesListModel.originalMp4.mp4Url
+}

@@ -17,12 +17,10 @@ import javax.inject.Singleton
 class PresenterModule {
 
     @Provides
-    @Singleton
     fun provideGifsListPresenter(api: ApiInterface): GifListContract.Presenter =
             GifListPresenter(api)
 
     @Provides
-    @Singleton
     fun provideGifDetailsPresenter(api: ApiInterface): GifPreviewContract.Presenter =
             GifPreviewPresenter(api)
 }

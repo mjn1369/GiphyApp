@@ -35,7 +35,7 @@ class GifListView : BaseView(), GifListContract.View, GifListAdapter.GifClickedI
     }
 
     private fun injectDependencies(){
-        GiphyApp.getInjector()?.injectGifListPresenter(this)
+        GiphyApp.getInjector()?.inject(this)
     }
 
     /**

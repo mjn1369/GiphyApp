@@ -1,8 +1,10 @@
 package apps.mjn.giphyapp.models.view
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Created by mJafarinejad on 8/13/2018.
  */
-data class GifItemModel(val stillUrl: String?, val videoUrl: String?, val title: String?) : Serializable
+@Parcelize
+data class GifItemModel(val stillUrl: String?, val videoUrl: String?, val title: String?) : Parcelable

@@ -15,4 +15,10 @@ data class PaginationModel(
 
         @SerializedName("offset")
         var offsetIndex: Long
-)
+) {
+        /**
+         * Checks if the PaginationModel has more items
+         */
+        fun hasMore() =
+                currentCount + offsetIndex < totalCount
+}
