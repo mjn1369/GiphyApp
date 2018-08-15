@@ -62,7 +62,7 @@ fun ImageView.loadUrlWithSuccessCallback(url: String?, callback: (Unit) -> Unit)
 /**
  * Inflates the 'layoutId' parameter
  */
-fun ViewGroup.inflate(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, this, false)
+fun ViewGroup.inflate(layoutId: Int):View = LayoutInflater.from(context).inflate(layoutId, this, false)
 //endregion
 
 //region Context Extensions

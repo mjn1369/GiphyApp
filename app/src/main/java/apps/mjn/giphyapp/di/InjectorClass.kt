@@ -10,7 +10,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = arrayOf(NetworkModule::class, PresenterModule::class))
+@Component(modules = [NetworkModule::class, PresenterModule::class])
 interface InjectorClass {
     fun inject(view: GifListView)
     fun inject(view: GifPreviewView)

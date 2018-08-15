@@ -36,11 +36,11 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGsonConverterFactory() = GsonConverterFactory.create(GsonBuilder()
-                .disableHtmlEscaping()
-                .serializeNulls()
-                .serializeSpecialFloatingPointValues()
-                .create())
+    fun provideGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create(GsonBuilder()
+            .disableHtmlEscaping()
+            .serializeNulls()
+            .serializeSpecialFloatingPointValues()
+            .create())
 
     @Provides
     @Singleton
@@ -48,7 +48,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, gsonConverterFactory: GsonConverterFactory) = Retrofit.Builder()
+    fun provideRetrofit(okHttpClient: OkHttpClient, gsonConverterFactory: GsonConverterFactory): Retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(gsonConverterFactory)
