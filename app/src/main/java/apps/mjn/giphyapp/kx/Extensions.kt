@@ -45,7 +45,7 @@ fun View.gone() {
 /**
  * Loads the 'url' parameter into imageView and runs 'callback' on completion
  */
-fun ImageView.loadUrlWithSuccessCallback(url: String?, callback: (Unit) -> Unit) {
+inline fun ImageView.loadUrlWithSuccessCallback(url: String?, crossinline callback: (Unit) -> Unit) {
     Glide.with(context).load(url).listener(object : RequestListener<Drawable> {
 
         override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean =
