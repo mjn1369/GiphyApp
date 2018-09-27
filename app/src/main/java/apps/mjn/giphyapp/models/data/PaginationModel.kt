@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName
 data class PaginationModel(
 
         @SerializedName("total_count")
-        var totalCount: Long,
+        private var totalCount: Long,
 
         @SerializedName("count")
-        var currentCount: Long,
+        private var currentCount: Long,
 
         @SerializedName("offset")
         var offsetIndex: Long

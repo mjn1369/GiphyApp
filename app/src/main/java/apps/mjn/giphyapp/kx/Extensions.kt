@@ -45,7 +45,7 @@ fun View.gone() {
 /**
  * Loads the 'url' parameter into imageView and runs 'callback' on completion
  */
-fun ImageView.loadUrlWithSuccessCallback(url: String?, callback: (Unit) -> Unit) {
+inline fun ImageView.loadUrlWithSuccessCallback(url: String?, crossinline callback: (Unit) -> Unit) {
     Glide.with(context).load(url).listener(object : RequestListener<Drawable> {
 
         override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean =
@@ -62,7 +62,7 @@ fun ImageView.loadUrlWithSuccessCallback(url: String?, callback: (Unit) -> Unit)
 /**
  * Inflates the 'layoutId' parameter
  */
-fun ViewGroup.inflate(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, this, false)
+fun ViewGroup.inflate(layoutId: Int):View = LayoutInflater.from(context).inflate(layoutId, this, false)
 //endregion
 
 //region Context Extensions

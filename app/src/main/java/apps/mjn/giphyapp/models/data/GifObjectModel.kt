@@ -9,10 +9,10 @@ import com.google.gson.annotations.SerializedName
 data class GifObjectModel(
 
         @SerializedName("title")
-        val title: String,
+        private val title: String,
 
         @SerializedName("images")
-        val imagesListModel: ImagesListModel
+        private val imagesListModel: ImagesListModel
 ) {
 
         /**
@@ -24,12 +24,12 @@ data class GifObjectModel(
         /**
          * Gets the still image url from GifObjectModel
          */
-        fun getStillUrl() =
+        private fun getStillUrl() =
                 imagesListModel.fixedHeightStill.gifUrl
 
         /**
          * Gets the video url from GifObjectModel
          */
-        fun getVideoUrl() =
+        private fun getVideoUrl() =
                 imagesListModel.originalMp4.mp4Url
 }

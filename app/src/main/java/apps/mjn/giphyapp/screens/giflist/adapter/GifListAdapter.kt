@@ -27,13 +27,9 @@ class GifListAdapter(private var items: MutableList<GifItemModel>, private var g
         }
     }
 
-    fun getItem(pos: Int): GifItemModel {
-        return items[pos]
-    }
+    fun getItem(pos: Int): GifItemModel = items[pos]
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount() = items.size
 
     interface GifClickedInterface {
         fun onGifClicked(item: GifItemModel)

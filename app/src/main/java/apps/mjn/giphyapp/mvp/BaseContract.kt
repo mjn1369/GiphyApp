@@ -21,7 +21,7 @@ interface BaseContract {
          */
         fun showMessage(message:String?)
     }
-    interface Presenter<V:View>{
+    interface Presenter<in V:View>{
 
         /**
          * Attaches a View to Presenter
