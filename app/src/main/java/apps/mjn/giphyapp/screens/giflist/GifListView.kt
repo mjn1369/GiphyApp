@@ -44,8 +44,8 @@ class GifListView : BaseView(), GifListContract.View, GifListAdapter.GifClickedI
     private fun initList() {
         layoutManager = GridLayoutManager(this, 2)
         adapter = GifListAdapter(arrayListOf(), this)
-        rv_giflist_items.layoutManager = layoutManager
-        rv_giflist_items.adapter = adapter
+        rvGifListItems.layoutManager = layoutManager
+        rvGifListItems.adapter = adapter
     }
 
     /**
@@ -54,11 +54,11 @@ class GifListView : BaseView(), GifListContract.View, GifListAdapter.GifClickedI
     private fun setupListeners() {
 
         //Setup click listeners
-        btn_giflist_retry.setOnClickListener { presenter.onMoreItems() }
-        iv_giflist_loadmore.setOnClickListener { presenter.onMoreItems() }
+        btnGifListRetry.setOnClickListener { presenter.onMoreItems() }
+        ivGifListLoadMore.setOnClickListener { presenter.onMoreItems() }
 
         //Setup scroll listener
-        rv_giflist_items.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        rvGifListItems.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
 
                 //check if the last visible item is actually the last item
@@ -68,8 +68,8 @@ class GifListView : BaseView(), GifListContract.View, GifListAdapter.GifClickedI
                         presenter.onMoreItems()
 
                         //scroll to exact bottom
-                        rv_giflist_items.post({
-                            rv_giflist_items.smoothScrollToPosition(adapter.itemCount + 1)
+                        rvGifListItems.post({
+                            rvGifListItems.smoothScrollToPosition(adapter.itemCount + 1)
                         })
                     }
                 }
@@ -79,39 +79,39 @@ class GifListView : BaseView(), GifListContract.View, GifListAdapter.GifClickedI
 
     override fun showItems(result: List<GifItemModel>) {
         isLoading = false
-        adapter.addAll(result.filter { it.stillUrl!=null })
+        adapter.addAll(result)
         adapter.notifyItemRangeInserted(adapter.itemCount-result.size, adapter.itemCount)
     }
 
     override fun showLoading() {
-        btn_giflist_retry.gone()
-        pb_giflist_loading.visible()
+        btnGifListRetry?.gone()
+        pbGifListLoading?.visible()
     }
 
     override fun hideLoading() {
-        btn_giflist_retry?.gone()
-        pb_giflist_loading?.gone()
+        btnGifListRetry?.gone()
+        pbGifListLoading?.gone()
     }
 
     override fun showRetry() {
-        pb_giflist_loading?.gone()
-        btn_giflist_retry?.visible()
+        pbGifListLoading?.gone()
+        btnGifListRetry?.visible()
     }
 
     override fun showRetryLoadMore() {
-        holder_giflist_loadmore?.visible()
-        pb_giflist_loadmore?.gone()
-        iv_giflist_loadmore?.visible()
+        holderGifListLoadMore?.visible()
+        pbGifListLoading?.gone()
+        ivGifListLoadMore?.visible()
     }
 
     override fun showLoadMore() {
-        holder_giflist_loadmore?.visible()
-        pb_giflist_loadmore?.visible()
-        iv_giflist_loadmore?.gone()
+        holderGifListLoadMore?.visible()
+        pbGifListLoading?.visible()
+        ivGifListLoadMore?.gone()
     }
 
     override fun hideLoadMore() {
-        holder_giflist_loadmore?.gone()
+        holderGifListLoadMore?.gone()
     }
 
     /**

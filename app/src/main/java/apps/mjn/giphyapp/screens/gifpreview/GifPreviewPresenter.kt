@@ -11,7 +11,7 @@ import javax.inject.Inject
 /**
  * Created by mJafarinejad on 8/11/2018.
  */
-class GifPreviewPresenter @Inject constructor(var api:ApiInterface) : BasePresenter<GifPreviewContract.View>(), GifPreviewContract.Presenter {
+class GifPreviewPresenter @Inject constructor(var api: ApiInterface) : BasePresenter<GifPreviewContract.View>(), GifPreviewContract.Presenter {
 
     override fun onNewRandomGifCountDown(delay: Long) {
         addDisposable(
@@ -27,15 +27,14 @@ class GifPreviewPresenter @Inject constructor(var api:ApiInterface) : BasePresen
     /**
      * Gets a new random gif
      */
-    private fun getRandom() = addDisposable(
+    private fun getRandom() =
             api.getRandom(Constants.API_KEY)
                     .setSchedulers()
                     .subscribe(
                             {
                                 if (it.isSuccessful()) {
                                     getView()?.showGif(it.gifObjectModel.toGifItemModel())
-                                }
-                                else {
+                                } else {
                                     onNewRandomGifCountDown(Constants.DELAY_RANDOM)
                                 }
                             },
@@ -43,5 +42,4 @@ class GifPreviewPresenter @Inject constructor(var api:ApiInterface) : BasePresen
                                 onNewRandomGifCountDown(Constants.DELAY_RANDOM)
                             }
                     )
-    )
 }

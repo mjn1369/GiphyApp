@@ -8,7 +8,7 @@
     tools:context="apps.mjn.giphyapp.screens.gifpreview.GifPreviewView">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cv_gifpreview"
+        android:id="@+id/cvGifPreview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -23,13 +23,13 @@
             android:orientation="vertical">
 
             <VideoView
-                android:id="@+id/vv_gifpreview_gif"
+                android:id="@+id/vvGifPreview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"/>
 
             <TextView
-                android:id="@+id/tv_gifpreview_title"
+                android:id="@+id/tvGifItemTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/space_1x"
@@ -40,7 +40,7 @@
     </android.support.v7.widget.CardView>
 
     <ProgressBar
-        android:id="@+id/pb_gifpreview_loading"
+        android:id="@+id/pbGifPreviewLoading"
         android:layout_width="@dimen/progress"
         android:layout_height="@dimen/progress"
         android:layout_centerInParent="true"/>
@@ -51,7 +51,7 @@
         android:layout_alignParentBottom="true">
 
         <ProgressBar
-            android:id="@+id/pb_gifpreview_delay"
+            android:id="@+id/pbGifPreviewDelay"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

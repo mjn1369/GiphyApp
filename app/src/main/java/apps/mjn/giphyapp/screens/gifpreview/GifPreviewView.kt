@@ -53,7 +53,7 @@ class GifPreviewView : BaseView(), GifPreviewContract.View {
      * Initializes delay progress view and its animation
      */
     private fun initProgress() {
-        animationRefreshProgress = ObjectAnimator.ofInt(pb_gifpreview_delay, "progress", 0, Constants.DELAY_RANDOM.toInt())
+        animationRefreshProgress = ObjectAnimator.ofInt(pbGifPreviewDelay, "progress", 0, Constants.DELAY_RANDOM.toInt())
         animationRefreshProgress.duration = (Constants.DELAY_RANDOM * getAnimationScaleCoefficient()).toLong()
         animationRefreshProgress.interpolator = LinearInterpolator()
     }
@@ -62,41 +62,41 @@ class GifPreviewView : BaseView(), GifPreviewContract.View {
      * Sets an OnPreparedListener for videoView
      */
     private fun setOnPlayListener() =
-            vv_gifpreview_gif.setOnPreparedListener({ mp ->
+            vvGifPreview.setOnPreparedListener({ mp ->
                 mp.isLooping = true
                 hideLoading()
                 startDelayProgress()
-                vv_gifpreview_gif.start()
+                vvGifPreview.start()
                 presenter.onNewRandomGifCountDown(Constants.DELAY_RANDOM)
             })
 
     override fun showGif(item: GifItemModel) {
         showLoading()
         currentGif = item
-        tv_gifpreview_title.visible()
+        tvGifItemTitle.visible()
         if(currentGif.title.isNullOrBlank())
-            tv_gifpreview_title.gone()
-        tv_gifpreview_title.text = currentGif.title
-        vv_gifpreview_gif.setVideoURI(Uri.parse(currentGif.videoUrl))
-        vv_gifpreview_gif.requestFocus()
+            tvGifItemTitle.gone()
+        tvGifItemTitle.text = currentGif.title
+        vvGifPreview.setVideoURI(Uri.parse(currentGif.videoUrl))
+        vvGifPreview.requestFocus()
     }
 
     /**
      * Starts the delay progress bar
      */
     private fun startDelayProgress() {
-        pb_gifpreview_delay.progress = 0
+        pbGifPreviewDelay.progress = 0
         animationRefreshProgress.start()
     }
 
     override fun showLoading() {
-        pb_gifpreview_loading?.visible()
-        cv_gifpreview?.invisible()
+        pbGifPreviewLoading?.visible()
+        cvGifPreview?.invisible()
     }
 
     override fun hideLoading() {
-        pb_gifpreview_loading?.invisible()
-        cv_gifpreview?.visible()
+        pbGifPreviewLoading?.invisible()
+        cvGifPreview?.visible()
     }
 
     override fun onSupportNavigateUp(): Boolean {

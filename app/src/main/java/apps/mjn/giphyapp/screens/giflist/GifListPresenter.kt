@@ -69,7 +69,7 @@ class GifListPresenter @Inject constructor(val api:ApiInterface) : BasePresenter
             getView()?.hideLoading()
         else
             getView()?.hideLoadMore()
-        getView()?.showItems(response.gifObjectsList.map { it.toGifItemModel() })
+        getView()?.showItems(response.gifObjectsList.map { it.toGifItemModel() }.filter { it.stillUrl!=null })
     }
 
     /**

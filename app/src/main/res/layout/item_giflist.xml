@@ -15,25 +15,25 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/holder_itemgiflist_gif"
+            android:id="@+id/holderItemGifList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/iv_itemgiflist_gif"
+                android:id="@+id/ivItemGifList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:layout_gravity="center"
                 android:layout_centerInParent="true"/>
             <ProgressBar
-                android:id="@+id/pb_itemgiflist_loading"
+                android:id="@+id/pbItemGiftList"
                 android:layout_width="@dimen/progress_small"
                 android:layout_height="@dimen/progress_small"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/tv_itemgiflist_title"
+            android:id="@+id/tvItemGifListTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -16,10 +16,11 @@ import kotlinx.android.synthetic.main.item_giflist.view.*
 class GifListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(item: GifItemModel, listener: GifListAdapter.GifClickedInterface) = with(itemView) {
         //Set image's height to 16:9 aspect ratio
-        holder_itemgiflist_gif.layoutParams.height = ((context.getScreenWidthInPx()/2) * (9.0/16.0)).toInt()
-        pb_itemgiflist_loading.visible()
-        tv_itemgiflist_title.text = if(item.title.isNullOrBlank()) context.getString(R.string.no_title) else item.title
-        iv_itemgiflist_gif.loadUrlWithSuccessCallback(item.stillUrl, { pb_itemgiflist_loading.gone()})
+        holderItemGifList.layoutParams.height = ((context.getScreenWidthInPx()/2) * (9.0/16.0)).toInt()
+
+        pbItemGiftList.visible()
+        tvItemGifListTitle.text = if(item.title.isNullOrBlank()) context.getString(R.string.no_title) else item.title
+        ivItemGifList.loadUrlWithSuccessCallback(item.stillUrl, { pbItemGiftList.gone()})
         setOnClickListener { listener.onGifClicked(item) }
     }
 }

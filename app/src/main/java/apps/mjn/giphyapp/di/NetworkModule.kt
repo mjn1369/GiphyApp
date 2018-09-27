@@ -24,7 +24,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun getOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
         val timeout = 15
         return OkHttpClient.Builder()
                 .readTimeout(timeout.toLong(), TimeUnit.SECONDS)
@@ -48,11 +48,15 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, gsonConverterFactory: GsonConverterFactory) = Retrofit.Builder()
+    fun provideRxJava2Adapter() = RxJava2CallAdapterFactory.create()
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient, gsonConverterFactory: GsonConverterFactory, rxJava2Adapter: RxJava2CallAdapterFactory) = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(gsonConverterFactory)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(rxJava2Adapter)
                 .build()
 
     @Provides

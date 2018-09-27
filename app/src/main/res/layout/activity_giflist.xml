@@ -7,13 +7,13 @@
     tools:context="apps.mjn.giphyapp.screens.giflist.GifListView">
 
     <ProgressBar
-        android:id="@+id/pb_giflist_loading"
+        android:id="@+id/pbGifListLoading"
         android:layout_width="@dimen/progress"
         android:layout_height="@dimen/progress"
         android:layout_centerInParent="true"/>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_giflist_retry"
+        android:id="@+id/btnGifListRetry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -21,7 +21,7 @@
         android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_giflist_items"
+        android:id="@+id/rvGifListItems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/holder_giflist_loadmore"
@@ -31,7 +31,7 @@
         android:scrollbars="none"></android.support.v7.widget.RecyclerView>
 
     <RelativeLayout
-        android:id="@+id/holder_giflist_loadmore"
+        android:id="@+id/holderGifListLoadMore"
         android:layout_width="match_parent"
         android:layout_height="@dimen/progress"
         android:layout_alignParentBottom="true"
@@ -53,7 +53,7 @@
         </FrameLayout>
 
         <ImageView
-            android:id="@+id/iv_giflist_loadmore"
+            android:id="@+id/ivGifListLoadMore"
             android:layout_width="@dimen/progress_small"
             android:layout_height="@dimen/progress_small"
             android:layout_centerInParent="true"
